@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Node (pptx 생성기)
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 빌드/출력물
+*.stl
+*.gcode
+/sim/runs/
+/sim/logs/
+*.pdf.tmp

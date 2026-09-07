@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 680" font-family="Helvetica,Arial,sans-serif">
+  <style>
+    .bg{fill:#ffffff}
+    .box{fill:#eef2f6;stroke:#2b3a42;stroke-width:1.6}
+    .box2{fill:#f4dccd;stroke:#b4551f;stroke-width:1.6}
+    .box3{fill:#e6f0ec;stroke:#2f7d5d;stroke-width:1.6}
+    .w1{fill:none;stroke:#2b3a42;stroke-width:2}
+    .pwr{fill:none;stroke:#c0392b;stroke-width:3}
+    .gnd{fill:none;stroke:#777;stroke-width:2;stroke-dasharray:2 3}
+    .sig{fill:none;stroke:#1f6feb;stroke-width:2}
+    .later{fill:none;stroke:#2f7d5d;stroke-width:2;stroke-dasharray:7 4}
+    .lbl{fill:#152029;font-size:12px}
+    .lblb{fill:#152029;font-size:13px;font-weight:bold}
+    .sm{fill:#4c5c64;font-size:10.5px}
+    .title{fill:#152029;font-size:15px;font-weight:bold}
+    .warn{fill:#b4551f;font-size:10.5px;font-weight:bold}
+    .phase{fill:#7d8ea0;font-size:11px;font-weight:bold;letter-spacing:2px}
+    .leg{fill:#4c5c64;font-size:10.5px}
+  </style>
+  <rect class="bg" x="0" y="0" width="1040" height="680"/>
+
+  <text class="title" x="24" y="28">COSMOS 호퍼 — 벤치 배선도 (Week 1 브링업 → Week 2 확장)</text>
+  <text class="sm" x="24" y="45">SolidGeek/SingleRotorUAV 펌웨어 기준</text>
+
+  <!-- legend -->
+  <line class="pwr" x1="330" y1="41" x2="360" y2="41"/><text class="leg" x="365" y="45">전원</text>
+  <line class="sig" x1="410" y1="41" x2="440" y2="41"/><text class="leg" x="445" y="45">신호</text>
+  <line class="gnd" x1="485" y1="41" x2="515" y2="41"/><text class="leg" x="520" y="45">GND(공통)</text>
+  <line class="later" x1="600" y1="41" x2="630" y2="41"/><text class="leg" x="635" y="45">Week 2 추가</text>
+
+  <!-- ================= WEEK 1 ZONE ================= -->
+  <rect x="20" y="58" width="590" height="540" fill="#fafcfd" stroke="#c9d4dc"/>
+  <text class="phase" x="34" y="78">WEEK 1 · 브링업 (실험 B · C)</text>
+
+  <!-- Laptop -->
+  <rect class="box" x="40" y="92" width="120" height="44" rx="4"/>
+  <text class="lblb" x="100" y="112" text-anchor="middle">노트북</text>
+  <text class="sm" x="100" y="128" text-anchor="middle">Arduino IDE</text>
+
+  <!-- BNO085 -->
+  <rect class="box" x="230" y="92" width="170" height="44" rx="4"/>
+  <text class="lblb" x="315" y="111" text-anchor="middle">BNO085 IMU</text>
+  <text class="sm" x="315" y="127" text-anchor="middle">I2C · 3.3V 급전</text>
+
+  <!-- Teensy -->
+  <rect class="box2" x="230" y="210" width="170" height="96" rx="6"/>
+  <text class="lblb" x="315" y="238" text-anchor="middle">Teensy 4.0</text>
+  <text class="sm" x="315" y="256" text-anchor="middle">3.3V 로직 · micro-SD 로깅</text>
+  <text class="warn" x="315" y="278" text-anchor="middle">⚠ 5V 신호 직결 금지</text>
+  <text class="sm" x="315" y="296" text-anchor="middle">DShot 핀 = dshot.cpp 참고</text>
+
+  <!-- USB laptop->teensy -->
+  <path class="sig" d="M100,136 L100,258 L230,258"/>
+  <text class="sm" x="108" y="200">USB (전원+시리얼)</text>
+
+  <!-- BNO085 <-> Teensy I2C -->
+  <path class="sig" d="M300,136 L300,210"/>
+  <path class="pwr" d="M330,136 L330,210"/>
+  <path class="gnd" d="M360,136 L360,210"/>
+  <text class="sm" x="368" y="160">SDA/SCL · 3V3 · GND</text>
+
+  <!-- ESC -->
+  <rect class="box2" x="230" y="380" width="170" height="74" rx="6"/>
+  <text class="lblb" x="315" y="406" text-anchor="middle">ESC (DShot)</text>
+  <text class="sm" x="315" y="423" text-anchor="middle">60/80A · 4S</text>
+  <text class="sm" x="315" y="439" text-anchor="middle">BEC 5–6V 출력</text>
+
+  <!-- Teensy -> ESC -->
+  <path class="sig" d="M290,306 L290,380"/>
+  <text class="sm" x="200" y="345">DShot</text>
+  <path class="gnd" d="M345,306 L345,380"/>
+  <text class="sm" x="352" y="345">GND 공통</text>
+
+  <!-- EDF -->
+  <circle cx="500" cy="417" r="36" class="box"/>
+  <text class="lblb" x="500" y="414" text-anchor="middle">64mm</text>
+  <text class="lblb" x="500" y="429" text-anchor="middle">EDF</text>
+  <path class="w1" d="M400,402 L462,402 M400,417 L464,417 M400,432 L462,432"/>
+  <text class="sm" x="404" y="392">3상</text>
+
+  <!-- Battery + kill -->
+  <rect class="box" x="40" y="500" width="130" height="48" rx="4"/>
+  <text class="lblb" x="105" y="521" text-anchor="middle">4S LiPo</text>
+  <text class="sm" x="105" y="537" text-anchor="middle">1300mAh · XT60</text>
+
+  <rect class="box2" x="205" y="500" width="120" height="48" rx="4"/>
+  <text class="lblb" x="265" y="521" text-anchor="middle">킬스위치</text>
+  <text class="sm" x="265" y="537" text-anchor="middle">물리 · ≥80A</text>
+
+  <path class="pwr" d="M170,524 L205,524"/>
+  <path class="pwr" d="M325,516 L360,516 L360,454"/>
+  <text class="sm" x="366" y="490">배터리 전원</text>
+
+  <!-- cap -->
+  <rect class="box" x="255" y="462" width="70" height="24" rx="3"/>
+  <text class="sm" x="290" y="478" text-anchor="middle">저ESR 캡</text>
+  <path class="pwr" d="M300,462 L300,454"/>
+
+  <!-- GND bus -->
+  <path class="gnd" d="M105,548 L105,576 L470,576"/>
+  <path class="gnd" d="M265,548 L265,576"/>
+  <path class="gnd" d="M345,454 L345,462 M470,576 L470,453"/>
+  <text class="sm" x="115" y="592">공통 GND 버스 — 모든 부품 GND를 한 점에</text>
+
+  <!-- ================= WEEK 2 ZONE ================= -->
+  <rect x="628" y="58" width="392" height="540" fill="#f7fbf9" stroke="#bfdccf"/>
+  <text class="phase" x="642" y="78">WEEK 2 · 추가</text>
+
+  <!-- UBEC -->
+  <rect class="box3" x="700" y="100" width="150" height="44" rx="4"/>
+  <text class="lblb" x="775" y="119" text-anchor="middle">UBEC 5–6V</text>
+  <text class="sm" x="775" y="135" text-anchor="middle">3A+ · 배터리에서</text>
+
+  <!-- servo rail -->
+  <rect class="box3" x="700" y="176" width="150" height="28" rx="3"/>
+  <text class="sm" x="775" y="195" text-anchor="middle">서보 전원 레일</text>
+  <path class="later" d="M775,144 L775,176"/>
+
+  <!-- 4 servos -->
+  <rect class="box" x="690" y="240" width="70" height="36" rx="3"/><text class="sm" x="725" y="262" text-anchor="middle">서보1</text>
+  <rect class="box" x="790" y="240" width="70" height="36" rx="3"/><text class="sm" x="825" y="262" text-anchor="middle">서보2</text>
+  <rect class="box" x="690" y="288" width="70" height="36" rx="3"/><text class="sm" x="725" y="310" text-anchor="middle">서보3</text>
+  <rect class="box" x="790" y="288" width="70" height="36" rx="3"/><text class="sm" x="825" y="310" text-anchor="middle">서보4</text>
+  <path class="later" d="M775,204 L775,232 L725,232 L725,240 M775,232 L825,232 L825,240 M725,232 L725,288 M825,232 L825,288"/>
+  <text class="sm" x="642" y="230">전원 ↓</text>
+
+  <!-- servo signal from Teensy -->
+  <path class="later" d="M400,240 C520,240 540,258 690,258"/>
+  <text class="sig" x="430" y="232" font-size="10">서보 신호 ×4 ← Teensy PWM (3.3V OK)</text>
+
+  <!-- RC RX -->
+  <rect class="box3" x="700" y="380" width="150" height="42" rx="4"/>
+  <text class="lblb" x="775" y="399" text-anchor="middle">FS-iA6B 수신기</text>
+  <text class="sm" x="775" y="414" text-anchor="middle">iBUS (1선) 권장</text>
+
+  <!-- level shifter -->
+  <rect class="box2" x="700" y="446" width="150" height="36" rx="3"/>
+  <text class="sm" x="775" y="462" text-anchor="middle">레벨 시프터</text>
+  <text class="sm" x="775" y="475" text-anchor="middle">5V → 3.3V</text>
+  <path class="later" d="M775,422 L775,446"/>
+  <path class="later" d="M700,464 C560,464 500,330 400,290"/>
+  <text class="warn" x="440" y="470">⚠ iA6B 신호 5V → 레벨 시프터 거쳐 Teensy</text>
+
+  <!-- ================= NOTES ================= -->
+  <rect x="20" y="610" width="1000" height="60" fill="#fff8f2" stroke="#e6c9b0"/>
+  <text class="lblb" x="34" y="628">주의 (Teensy 4.0 초보 필독)</text>
+  <text class="sm" x="34" y="644">• Teensy 4.0 GPIO는 3.3V 전용 — 5V 신호 직결 시 손상(레벨 시프터/분압 필수).  • 모든 GND 한 점에(ESC↔Teensy GND 없으면 DShot 안 됨).</text>
+  <text class="sm" x="34" y="659">• 서보 전원은 UBEC/BEC에서(Teensy 3.3V 아님).  • 실험 C(EDF 첫 회전): 스탠드 완전 고정 + 물리 킬 + 보안경 + 저스로틀부터 + 지도교사 입회.</text>
+</svg>
